@@ -1,23 +1,24 @@
-import React, { useEffect, useState } from "react"
-import "./App.css"
+import React, { useEffect, useState } from "react";
+import "./App.css";
 
 function App() {
-  const [message, setMessage] = useState("")
-  const [count, setCount] = useState(0)
-  useEffect(() => {
-    setMessage(`${count} Times clicked`)
-  })
-  const onClick = () => {
-    setCount(count + 1)
-  }
-  return (
-    <div className="container">
-      <a href="#" onClick={onClick}>
-        Click here
-      </a>
-      <div style={{ marginLeft: '1rem' }}>{message}</div>
-    </div>
-  )
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        const message = `${count} Times clicked`;
+        document.title = message;
+    }, [count]);
+
+    const onClick = () => {
+        setCount(count + 1);
+    };
+
+    return (
+        <div className="container">
+            <button onClick={onClick}>Click here</button>
+            <div style={{ marginLeft: "1rem" }}>{count} Times clicked</div>
+        </div>
+    );
 }
 
-export default App
+export default App;
